@@ -24,3 +24,4 @@ while True:
     #create more? yes/no
 file_reader.close()
 print("file is saved! thank you for using this program")
+#additonal note
