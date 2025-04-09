@@ -3,6 +3,7 @@
 #enter quiz name:
 quiz_name = input("Enter the quiz name: ")
 file_reader = open(quiz_name, "a")
+if not quiz_name.endswith(".txt"):
     quiz_name += ".txt"
 while True:
     #enter a question:
