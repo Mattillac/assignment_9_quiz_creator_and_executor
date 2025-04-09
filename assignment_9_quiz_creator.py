@@ -2,7 +2,7 @@
 #asks the user to input a quiz name and number of questions
 #enter quiz name:
 quiz_name = input("Enter the quiz name: ")
-file_reader = open(quiz_name, "w")
+file_reader = open(quiz_name, "a")
 while True:
     #enter a question:
     question_maker = input("Enter a question: ")
