@@ -1,5 +1,17 @@
 #QUIZ EXECUTOR
+import random
  #Enter the file name: 
+ def main_engine():
+    print("HEY! WELCOME TO THE QUIZ EXECUTOR")
+    file_name = input("Enter the file name to start: ")
+    quiz_infos = quiz_loader_data(file_name)
+    if quiz_infos:
+        run_quiz(quiz_infos)
+    else:
+        print("Failed to load quiz. Please check the file name and try again.")
+if __name__ == "__main__":
+    main_engine()
+
  #Opens the file and reads the questions and answers
  #Prints the question (Who is the pirate in pirates of the carribean with a bird name?)
  # prints the possible answers (1. Jack Sparrow, 2. Captain Hook, 3. Davy Jones, 4. Blackbeard)
