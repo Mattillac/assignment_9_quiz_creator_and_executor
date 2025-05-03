@@ -9,8 +9,26 @@ def quiz_loader_data(file_name):
         return lines
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
-        return None
+        return quiz_questions
     
+    i = 0
+    while i < len(lines):
+        if lines[i].startswith("Q:"):
+            question = lines[i][2:].strip()
+            i += 1
+            if i < len(lines) and lines[i].startswith("A:"):
+                answers = lines[i][2:].strip().split(",")
+                answers = [answer.strip() for answer in answers]
+                quiz_questions.append({
+                    "question": question,
+                    "answers": answers
+                })
+                i += 1
+    else:
+        i+= 1
+
+    return quiz
+
  #Enter the file name: 
  def main_engine():
     print("HEY! WELCOME TO THE QUIZ EXECUTOR")
