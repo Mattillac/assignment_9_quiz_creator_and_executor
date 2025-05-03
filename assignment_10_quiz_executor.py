@@ -11,19 +11,26 @@ def quiz_loader_data(file_name):
         print(f"File '{file_name}' not found.")
         return quiz_questions
     
-    i = 0
-    while i < len(lines):
+i = 0
+while i < len(lines):
         if lines[i].startswith("Q:"):
-            question = lines[i][2:].strip()
+            question = lines[i][9:].strip()
             i += 1
-            if i < len(lines) and lines[i].startswith("A:"):
-                answers = lines[i][2:].strip().split(",")
-                answers = [answer.strip() for answer in answers]
-                quiz_questions.append({
-                    "question": question,
-                    "answers": answers
-                })
-                i += 1
+            if i < len(lines) and lines[i].startswith("Answers and Correct Answer():"):
+                answer_line = lines[i][28:].strip().split(",")
+          if "(" in answer_line: and ")" in answer_line:
+            last_parenthesis = answer_line.find(")")
+            correct = answer_line[last_parenthesis+1:answer_line.rfind(",")].strip()
+            answers = [answer.strip() for answer in answer_line[:last_parenthesis].split(",") if answer.strip()]
+            if correct not in answers:
+                answers.append(correct)
+
+            quiz.append({
+                "question": question,
+                "answers": answers,
+                "correct": correct
+            })
+         i += 1
     else:
         i+= 1
 
