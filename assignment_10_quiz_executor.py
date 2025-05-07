@@ -49,15 +49,15 @@ def load_quiz(filename):
 		print(f"ERROR! File '{filename}' not found.")
 		return quiz
 
-	i = 0
-	while i < len(lines):
-		if lines[i].startswith("Question:"):
-			question = lines[i][len("Question:"):].strip()
-			i += 1
+	looper = 0
+	while looper < len(lines):
+		if lines[looper].startswith("Question:"):
+			question = lines[looper][len("Question:"):].strip()
+			looper += 1
 			
-			if i < len(lines) and lines[i].startswith("Answers and Correct Answer():"):
-				answer_line = lines[i][len("Answers and Correct Answer():"):].strip()
-				i += 1 
+			if looper < len(lines) and lines[looper].startswith("Answers and Correct Answer():"):
+				answer_line = lines[looper][len("Answers and Correct Answer():"):].strip()
+				looper += 1 
 				
 
 				if "(" in answer_line and ")" in answer_line:
@@ -75,9 +75,9 @@ def load_quiz(filename):
 						"correct": correct_answer
 					})
 			else:
-				i += 1
+				looper += 1
 		else:
-			i += 1 
+			looper += 1 
 
 	return quiz
 
